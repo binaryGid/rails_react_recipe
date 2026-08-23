@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get "recipes/index"
+      get "show/:id", to: "recipes#show"
+      post "recipes/create"
+      delete "destroy/:id", to: "recipe#destroy"
+    end
+  end
   root "homepage#index"
+  get "/*path" => "homepage#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
